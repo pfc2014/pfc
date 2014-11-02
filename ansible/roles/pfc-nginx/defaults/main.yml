@@ -1,0 +1,3 @@
+# file: ansible/roles/pfc-nginx/defaults/main.yml
+---
+nginx_gzip_status: "off"
