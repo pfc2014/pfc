@@ -1,0 +1,13 @@
+# ansible/roles/pfc-nginx/tasks/main.yml
+---
+
+- name: Add nginx-full ppa
+  apt_repository: >
+    repo="ppa:nginx/stable"
+    update_cache=yes
+
+- name: Install nginx-full
+  apt: >
+    name=nginx-full
+    state=latest
+

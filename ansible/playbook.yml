@@ -1,0 +1,6 @@
+---
+
+- hosts: [pfc-vm]
+  sudo: yes
+  roles:
+    - pfc-nginx
