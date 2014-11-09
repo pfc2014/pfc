@@ -18,3 +18,9 @@
     validate="nginx -t -c %s"
   notify:
     - reload nginx
+
+- name: Ensure nginx is started at boot
+  service: >
+    name=nginx
+    state=started
+    enabled=yes
