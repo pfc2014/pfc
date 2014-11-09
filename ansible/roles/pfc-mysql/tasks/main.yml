@@ -1,0 +1,13 @@
+# ansible/roles/pfc-mysql/tasks/main.yml
+---
+
+- name: Installing mysql-server
+  apt: >
+    name=mysql-server
+    state=latest
+
+- name: Ensure mysql is started at boot
+  service: >
+    name=mysql
+    state=started
+    enabled=yes

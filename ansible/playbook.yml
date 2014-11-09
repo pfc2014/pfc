@@ -1,6 +1,8 @@
+# ansible/playbook.yml
 ---
 
 - hosts: [pfc-vm]
   sudo: yes
   roles:
     - pfc-nginx
+    - pfc-mysql
