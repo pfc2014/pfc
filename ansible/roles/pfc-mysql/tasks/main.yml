@@ -1,13 +1,27 @@
 # ansible/roles/pfc-mysql/tasks/main.yml
 ---
 
-- name: Installing mysql-server
+- name: Installing mysql-server and dependencies
   apt: >
-    name=mysql-server
+    name={{item}}
     state=latest
+  with_items:
+    - mysql-server
+    - python-mysqldb
 
-- name: Ensure mysql is started at boot
+- name: Ensuring mysql is started at boot
   service: >
     name=mysql
     state=started
     enabled=yes
+
+- name: Setting the mysql root password
+  mysql_user:
+    user: root
+    host: "{{item}}"
+    password: "{{mysql_root_password}}"
+  with_items:
+   - "{{ansible_hostname}}"
+   - 127.0.0.1
+   - ::1
+   - localhost
