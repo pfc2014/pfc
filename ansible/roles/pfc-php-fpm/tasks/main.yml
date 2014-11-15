@@ -1,0 +1,14 @@
+# file: roles/pfc-php-fpm/defaults/main.yml
+---
+- name: Install php5-fpm
+  apt: >
+    name={{ item }}
+    state=present
+  with_items:
+    - php5-fpm
+    - php5-cli
+    - php5-mysql
+    - php5-gd
+    - php5-curl
+    - php5-mcrypt
+
