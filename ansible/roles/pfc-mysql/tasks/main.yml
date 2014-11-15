@@ -25,3 +25,11 @@
    - 127.0.0.1
    - ::1
    - localhost
+
+- name: Setting mysql passwordless root access
+  template:
+    src: .my.cnf.j2
+    dest: /root/.my.cnf
+    owner: root
+    group: root
+    mode: 0600
