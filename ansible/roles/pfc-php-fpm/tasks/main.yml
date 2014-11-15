@@ -1,6 +1,6 @@
 # file: roles/pfc-php-fpm/defaults/main.yml
 ---
-- name: Install php5-fpm
+- name: Installing php5-fpm
   apt: >
     name={{ item }}
     state=present
@@ -12,3 +12,8 @@
     - php5-curl
     - php5-mcrypt
 
+- name: Ensuring php-fpm is started at boot
+  service: >
+    name=php5-fpm
+    state=started
+    enabled=yes
