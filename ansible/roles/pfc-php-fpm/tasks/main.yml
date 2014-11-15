@@ -17,3 +17,14 @@
     name=php5-fpm
     state=started
     enabled=yes
+
+- name: Configuring php.ini
+  ini_file: >
+    dest=/etc/php5/fpm/php.ini
+    section=PHP
+    option="{{ item.option }}"
+    value="{{ item.value }}"
+    backup=yes
+  with_items: php_ini_settings
+  notify:
+    - restart php-fpm

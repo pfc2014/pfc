@@ -1,0 +1,4 @@
+# file: roles/pfc-php-fpm/handlers/main.yml
+---
+- name: restart php-fpm
+  service: name=php5-fpm state=restarted

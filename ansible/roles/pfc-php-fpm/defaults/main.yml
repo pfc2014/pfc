@@ -1,0 +1,19 @@
+# file: roles/pfc-php-fpm/defaults/main.yml
+---
+php_ini_settings:
+  - option: "memory_limit"
+    value: "512M"
+  - option: "post_max_size"
+    value: "128M"
+  - option: "upload_max_filesize"
+    value: "128M"
+  - option: "display_errors"
+    value: "On"
+  - option: "error_reporting"
+    value: "E_ALL | E_STRICT"
+  - option: "display_startup_errors"
+    value: "On"
+  - option: "html_errors"
+    value: "On"
+  - option: "track_errors"
+    value: "On"
