@@ -6,3 +6,4 @@
   roles:
     - pfc-nginx
     - pfc-mysql
+    - pfc-php-fpm
