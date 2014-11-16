@@ -1,6 +1,0 @@
-# ansible/roles/pfc-drupal/defaults/main.yml
----
-drupal_repo: "http://git.drupal.org/project/drupal.git"
-drupal_version: "7.33"
-drupal_install_path: "/var/www/drupal-{{ drupal_version }}"
-
