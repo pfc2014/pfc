@@ -4,7 +4,7 @@
 - hosts: [pfc-vm]
   sudo: yes
   roles:
-  #   - pfc-nginx
-  #   - pfc-mysql
-  #   - pfc-php-fpm
-    - pfc-drupal
+    # - pfc-nginx
+    # - pfc-mysql
+    # - pfc-php-fpm
+    - pfc-drupal-conf
