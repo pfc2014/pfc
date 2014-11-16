@@ -1,7 +1,14 @@
 # ansible/roles/pfc-drupal/tasks/main.yml
 ---
 
-- name: Installing drush
+- name: Installing git for downloading drupal core
   apt: >
-    name=drush
+    name=git
     state=latest
+
+- name: Getting drupal core code from git
+  git: >
+    repo={{ drupal_repo }}
+    version={{ drupal_version }}
+    dest={{ drupal_install_path }}
+
