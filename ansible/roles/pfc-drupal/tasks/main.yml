@@ -1,0 +1,7 @@
+# ansible/roles/pfc-drupal/tasks/main.yml
+---
+
+- name: Installing drush
+  apt: >
+    name=drush
+    state=latest
