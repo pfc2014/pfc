@@ -31,3 +31,19 @@
     --db-url=mysql://{{ drupal_db_user }}:{{ drupal_db_pass }}@localhost/{{ drupal_db }}
     chdir={{ drupal_path }}
     creates={{ drupal_path }}/sites/default/settings.php
+
+- name: Add Apache virtualhost for Drupal.
+  template: >
+    src=nginx-vhost.conf.j2
+    dest=/etc/nginx/sites-available/nginx-vhost.conf
+    owner=root
+    group=root
+    mode=644
+  notify: reload nginx
+
+- name: Symlink Drupal virtualhost to sites-enabled.
+  file: >
+    src=/etc/nginx/sites-available/nginx-vhost.conf
+    dest=/etc/nginx/sites-enabled/nginx-vhost.conf
+    state=link
+  notify: reload nginx
