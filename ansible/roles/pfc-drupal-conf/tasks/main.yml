@@ -11,7 +11,7 @@
     name={{ drupal_db_user }}
     host={{ item }}
     priv={{ drupal_db }}.*:ALL
-    password={{ drupal_db_password }}
+    password={{ drupal_db_pass }}
   with_items:
     - 127.0.0.1
     - ::1
@@ -22,15 +22,12 @@
      name=drush
      state=latest
 
-- name: Installing drupal with drush
-  command: >
+- name: Configuring drupal settings.php with drush
+  shell: >
     drush si standard -y
-    --db-url=mysql://{{ drupal_db_user }}:{{ drupal_db_password }}@localhost/{{ drupal_db }}
     --site-name="{{ drupal_site_name }}"
     --account-name={{ drupal_admin_name }}
     --account-pass={{ drupal_admin_pass }}
+    --db-url=mysql://{{ drupal_db_user }}:{{ drupal_db_pass }}@localhost/{{ drupal_db }}
     chdir={{ drupal_path }}
     creates={{ drupal_path }}/sites/default/settings.php
-
-
-
