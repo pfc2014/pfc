@@ -13,7 +13,7 @@
     - ::1
     - localhost
 
-- name: Installing drush
+- name: Installing drush and sendmail
   apt: >
      name={{ item }}
      state=latest
