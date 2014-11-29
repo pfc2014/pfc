@@ -32,7 +32,7 @@
     chdir={{ drupal_path }}
     creates={{ drupal_path }}/sites/default/settings.php
 
-- name: Add Apache virtualhost for Drupal.
+- name: Adding nginx site conf file
   template: >
     src=nginx-vhost.conf.j2
     dest=/etc/nginx/sites-available/nginx-vhost.conf
@@ -41,9 +41,15 @@
     mode=644
   notify: reload nginx
 
-- name: Symlink Drupal virtualhost to sites-enabled.
+- name: Enabling nginx site and reload the webserver
   file: >
     src=/etc/nginx/sites-available/nginx-vhost.conf
     dest=/etc/nginx/sites-enabled/nginx-vhost.conf
     state=link
+  notify: reload nginx
+
+- name: Disabling nginx default site
+  file: >
+    path=/etc/nginx/sites-enabled/default
+    state=absent
   notify: reload nginx
