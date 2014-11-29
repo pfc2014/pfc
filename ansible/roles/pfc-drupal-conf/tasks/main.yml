@@ -15,8 +15,11 @@
 
 - name: Installing drush
   apt: >
-     name=drush
+     name={{ item }}
      state=latest
+  with_items:
+    - drush
+    - sendmail
 
 - name: Configuring drupal settings.php with drush
   shell: >
