@@ -1,11 +1,6 @@
 # ansible/roles/pfc-drupal-conf/tasks/main.yml
 ---
 
-- name: Creating the MySQL db for drupal
-  mysql_db: >
-    db={{ drupal_db }}
-    state=present
-
 - name: Creating a MySQL user for drupal
   mysql_user: >
     name={{ drupal_db_user }}
@@ -13,6 +8,7 @@
     priv={{ drupal_db }}.*:ALL
     password={{ drupal_db_pass }}
   with_items:
+    - "{{ ansible_hostname }}"
     - 127.0.0.1
     - ::1
     - localhost
