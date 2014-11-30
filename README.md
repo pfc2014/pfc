@@ -21,11 +21,9 @@ Clonar el repositorio:
 
     git clone git@github.com:pfc2014/pfc.git
 
-Entrar en el directorio y ejecuta 'vagrant up':
+Entrar en el directorio y ejecutar 'vagrant up':
 
     cd pfc && vagrant up
-
-Vagrant descargará y creará una máquina virtual, invocando a su vez a Ansible para aprovisionar el sistema.
 
 Una vez termine el proceso nuestra aplicación debe estar disponible en la dirección:
 
